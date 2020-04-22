@@ -1,0 +1,65 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100px;
+}
+
+.navbar button {
+  border-radius: 3px;
+  border-color: blueviolet;
+  min-height: 40px;
+  min-width: 150px;
+  margin: 10px;
+  background-color: blueviolet;
+  color: white;
+  font-weight: 800;
+}
+
+.navbar-header {
+  color: blueviolet;
+}
+
+.navbar-right {
+  margin: 20px;
+}
+
+.navTimer {
+  font-size: 20px;
+  color: blueviolet;
+  font-weight: 800px;
+}
+
+.container-fluid {
+  margin-top: 100px;
+  min-height: 500px;
+  max-width: 70%;
+  background-color: rgb(180, 166, 194);
+  border-color: grey;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-fluid button {
+  border-radius: 3px;
+  border-color: white;
+  min-height: 25px;
+  min-width: 75px;
+  margin: 10px;
+  background-color: grey;
+  color: black;
+  font-weight: 400;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hide {
+  display: none;
+}
