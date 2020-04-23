@@ -1,27 +1,36 @@
-// #1 Create a timer for 90 seconds, upper right corner
-// #2 Create a button, "View Highscores", and show local storage's memory of recent scores and rank.
-// #3 Create a Quiz
+const startBtn = document.getElementById("startBtn");
+const questionContainerEl = document.getElementById("questionContainer");
+const questionEl = document.getElementById("question");
+const answerButtonEl = document.getElementById("answerButtons");
 
-// SET timeInterval
-// var timeEl = document.querySelector(".time");
-// var endEl = document.querySelector("#end");
-// var secondsLeft = 90;
+let shuffledQuestions, currentQuestionIndex;
 
-// function setTime() {
-//     var timeInterval = set Interval(function () {
-//         secondsLeft--;
-//         timeEl.textContent = secondsLeft + " seconds left.";
+// Start button & hide
+startBtn.addEventListener("click", startGame);
 
-//         if (secondsLeft === 0) {
-//             clearInterval(timerInterval);
-//         }
-//     }, 1000);
-//     function sendMessage();
-// }
+function startGame() {
+  startBtn.classList.add("hide");
+  shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+  currentQuestionIndex = 0;
+  questionContainerEl.classList.remove("hide");
+}
 
-// function sendMessage() {
-//     timeEl.textContent = "";
-//     endEl.appendChild();
-// }
+function setNextQuestion() {
+  showQuestion(shuffledQuestions[currentQuestionIndex]);
+}
 
-// setTime();
+function showQuestion(question) {
+  questionEl.innerText = question.question;
+}
+
+function selectAnswer() {}
+
+const questions = [
+  {
+    question: "What is the 1st questions?",
+    answers: [
+      { text: "correct answer", correct: true },
+      { text: "incorrect answer", correct: false },
+    ],
+  },
+];

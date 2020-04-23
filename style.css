@@ -1,43 +1,47 @@
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 100px;
+.jumbotron {
+  background-color: rgb(110, 67, 150);
+  max-height: 170px;
 }
 
-.navbar button {
+.jumbotron h1 {
+  font-size: 70px;
+  color: white;
+}
+
+.jumbotron,
+.navScore,
+.navTimer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Score {
   border-radius: 3px;
-  border-color: blueviolet;
+  border-color: rgb(110, 67, 150);
   min-height: 40px;
   min-width: 150px;
   margin: 10px;
-  background-color: blueviolet;
+  background-color: rgb(110, 67, 150);
   color: white;
   font-weight: 800;
 }
 
-.navbar-header {
-  color: blueviolet;
-}
-
-.navbar-right {
-  margin: 20px;
-}
-
-.navTimer {
-  font-size: 20px;
-  color: blueviolet;
+.Timer {
+  font-size: 40px;
+  color: rgb(110, 67, 150);
   font-weight: 800px;
 }
 
 .container-fluid {
   margin-top: 100px;
-  min-height: 500px;
-  max-width: 70%;
+  max-width: 500px;
   background-color: rgb(180, 166, 194);
   border-color: grey;
   border-radius: 5px;
   box-shadow: 0 0 10px 2px;
+}
+
+.col-md-8 {
   display: flex;
   justify-content: center;
   align-items: center;
