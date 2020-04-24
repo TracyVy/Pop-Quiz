@@ -1,7 +1,7 @@
 var timeEl = document.querySelector(".navTimer");
 var scoresEl = document.getElementById("displayScores");
-var secondsLeft = 90;
-
+var secondsLeft = 60;
+var answerHTML = "";
 const startBtn = document.getElementById("startBtn");
 const questionContainerEl = document.getElementById("questionContainer");
 const questionEl = document.getElementById("question");
@@ -32,6 +32,7 @@ function startGame() {
   shuffledQuestions = questions.sort(() => Math.random() - 0.5);
   currentQuestionIndex = 0;
   questionContainerEl.classList.remove("hide");
+  showQuestion(shuffledQuestions[currentQuestionIndex]);
 }
 
 function setNextQuestion() {
@@ -39,7 +40,14 @@ function setNextQuestion() {
 }
 
 function showQuestion(question) {
-  questionEl.innerText = question.question;
+  questionEl.innerText = question.questionText;
+  for (var i = 0; i < question.answers.length; i++) {
+    var a = question.answers[i];
+
+    // Dynamically display answer buttons
+    answerHTML += '<button class="btn">' + a.text + "</button>";
+  }
+  answerButtonEl.innerHTML = answerHTML;
 }
 
 function selectAnswer() {}
@@ -51,11 +59,33 @@ function sendMessage() {
 
 // startGame();
 
+// function endGame() {}
+
 const questions = [
   {
-    question: "What is the 1st questions?",
+    questionText: "What is the 1st question?",
+    answers: [
+      { text: "A", correct: true },
+      { text: "B", correct: false },
+      { text: "C", correct: false },
+      { text: "D", correct: false },
+    ],
+  },
+  {
+    questionText: "What is the 2nd question?",
     answers: [
       { text: "correct answer", correct: true },
+      { text: "incorrect answer", correct: false },
+      { text: "incorrect answer", correct: false },
+      { text: "incorrect answer", correct: false },
+    ],
+  },
+  {
+    questionText: "What is the 3rd question?",
+    answers: [
+      { text: "correct answer", correct: true },
+      { text: "incorrect answer", correct: false },
+      { text: "incorrect answer", correct: false },
       { text: "incorrect answer", correct: false },
     ],
   },
