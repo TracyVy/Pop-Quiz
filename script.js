@@ -1,31 +1,31 @@
-var timeEl = document.querySelector(".navTimer");
-var scoresEl = document.getElementById("displayScores");
-var secondsLeft = 60;
-var answerHTML = "";
 const startBtn = document.getElementById("startBtn");
+
+const startingMinutes = 1;
+let time = startingMinutes * 60;
+const timerEl = document.getElementById("timer");
+
 const questionContainerEl = document.getElementById("questionContainer");
 const questionEl = document.getElementById("question");
+var answerHTML = "";
 const answerButtonEl = document.getElementById("answerButtons");
-
 let shuffledQuestions, currentQuestionIndex;
-
-// Time Interval
-function setTime() {
-  var timerInterval = setInterval(function () {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft;
-
-    if (secondsLeft === 0) {
-      clearInterval(timerInterval);
-      // cancel setNextQuestion()
-      // sendMessage();
-      // showScores();
-    }
-  }, 1000);
-}
+var scoresEl = document.getElementById("displayScores");
 
 // Start button & hide
 startBtn.addEventListener("click", startGame);
+
+// Time Interval
+setInterval(countdown, 1000);
+function countdown() {
+  const minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  timerEl.innerHTML = `${minutes}: ${seconds}`;
+  time--;
+  // if (seconds == 0) {
+  //   clearInterval(timerEl);
+  // }
+}
 
 function startGame() {
   startBtn.classList.add("hide");
@@ -33,6 +33,7 @@ function startGame() {
   currentQuestionIndex = 0;
   questionContainerEl.classList.remove("hide");
   showQuestion(shuffledQuestions[currentQuestionIndex]);
+  answerButtonEl.addEventListener("click", setNextQuestion());
 }
 
 function setNextQuestion() {
@@ -56,8 +57,6 @@ function sendMessage() {
   timeEl.textContent = "Great! You've finished.";
   scoresEl.appendChild();
 }
-
-// startGame();
 
 // function endGame() {}
 

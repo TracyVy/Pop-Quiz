@@ -20,7 +20,7 @@
 
     <!-- Timer -->
     <div>
-      <h1 class="navTimer" id="Timer">Timer</h1>
+      <h1 class="timer" id="timer">60 sec Timer</h1>
     </div>
 
     <!-- Highscores Button -->
@@ -36,19 +36,12 @@
         <!-- Quiz container -->
         <div class="col-md-8">
           <div id="questionContainer" class="hide">
-            <div id="question">What is the 1st question?</div>
-            <div id="answerButtons" class="btn-grid">
-              <!---
-              <button class="btn">A</button>
-              <button class="btn">B</button>
-              <button class="btn">C</button>
-              <button class="btn">D</button>
-              -->
-            </div>
+            <div id="question"></div>
+            <div id="answerButtons" class="btn-group-vertical"></div>
           </div>
           <!-- Start/Next control buttons -->
           <div class="controls">
-            <button id="startBtn" class="startBtn btn">Start</button>
+            <button class="startBtn btn" id="startBtn">Start</button>
           </div>
         </div>
         <div class="col-md-2"></div>
