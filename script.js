@@ -124,12 +124,15 @@ function getInitial() {
     }
   });
   document.getElementById("initialTxt").appendChild(initials);
+  displayScores();
 }
 
 function displayScores() {
   scoreBtn.addEventListener("click", displayScores);
   for (var i = 0; i < localStorage.length; i++) {
-    $("body").append(localStorage.getItem(localStorage.key(i)));
+    questionContainer.innerHTML = append(
+      localStorage.getItem(localStorage.key(i))
+    );
   }
 }
 
