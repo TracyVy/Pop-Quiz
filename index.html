@@ -27,18 +27,22 @@
         <button class="startBtn btn" id="startBtn">Play</button>
       </div>
       <div>
-        <button class="scoreBtn btn" id="scoreBtn">View Highscores</button>
+        <a href="scoreboard.html"
+          ><button class="scoreBtn btn" id="scoreBtn">
+            View Highscores
+          </button></a
+        >
       </div>
       <div class="initial" id="initialTxt"></div>
     </nav>
 
     <!-- Bootstrap grid -->
-    <div class="container-fluid">
+    <div id="quizContainer" class="container-fluid hide">
       <div class="row">
         <div class="col-md-2"></div>
         <!-- Quiz container -->
         <div class="col-md-8">
-          <div id="questionContainer" class="hide">
+          <div id="questionContainer">
             <div id="question"></div>
             <div id="answerButtons" class="btn-group-vertical"></div>
           </div>

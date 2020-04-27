@@ -8,7 +8,7 @@ const timerEl = document.getElementById("timer");
 var countdownTimer;
 
 // Quiz variables
-const questionContainerEl = document.getElementById("questionContainer");
+const quizContainerEl = document.getElementById("quizContainer");
 const quizQue = document.getElementById("question");
 var answerHTML = "";
 const answerButtonEl = document.getElementById("answerButtons");
@@ -52,7 +52,7 @@ function startGame() {
   // Shuffle questions
   shuffledQuestions = questions.sort(() => Math.random() - 0.5);
   currentQuestionIndex = 0;
-  questionContainerEl.classList.remove("hide");
+  quizContainerEl.classList.remove("hide");
   showQuestion();
   answerButtonEl.addEventListener("click", showQuestion);
 
@@ -138,8 +138,8 @@ function displayScores() {
   }
 }
 
-highScores.push(points);
-highScores.sort (a,b) => b.points - a.points)
+// highScores.push(points);
+// highScores.sort (a,b) => b.points - a.points)
 
 // Pop Quiz questions array
 const questions = [
