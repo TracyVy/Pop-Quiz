@@ -35,12 +35,6 @@
   box-shadow: 0 0 10px 2px;
 }
 
-.col-md-8 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .container-fluid button {
   border-radius: 3px;
   border-color: white;
@@ -52,7 +46,13 @@
   font-weight: 400;
 }
 
-.controls {
+.col-md-8 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.control {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,4 +60,11 @@
 
 .hide {
   display: none;
+}
+
+.initial {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }

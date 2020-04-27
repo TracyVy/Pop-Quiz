@@ -1,64 +1,137 @@
+// Start game variable
 const startBtn = document.getElementById("startBtn");
 
+// Timer variables
 const startingMinutes = 1;
-let time = startingMinutes * 60;
+let time = startingMinutes * 59;
 const timerEl = document.getElementById("timer");
+var countdownTimer;
 
+// Quiz variables
 const questionContainerEl = document.getElementById("questionContainer");
-const questionEl = document.getElementById("question");
+const quizQue = document.getElementById("question");
 var answerHTML = "";
 const answerButtonEl = document.getElementById("answerButtons");
 let shuffledQuestions, currentQuestionIndex;
-var scoresEl = document.getElementById("displayScores");
+const questionsMaxLength = 10;
+
+// End of game variables
+var points = 0;
+var initials = document.createElement("initial");
+var initialsValue = "";
 
 // Start button & hide
 startBtn.addEventListener("click", startGame);
 
-// Time Interval
-setInterval(countdown, 1000);
 function countdown() {
-  const minutes = Math.floor(time / 60);
-  let seconds = time % 60;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
-  timerEl.innerHTML = `${minutes}: ${seconds}`;
-  time--;
-  // if (seconds == 0) {
-  //   clearInterval(timerEl);
-  // }
+  console.log("Starting countdownTimer...");
+  // Time Interval
+  //countdownTimer =
+  countdownTimer = setInterval(function () {
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    timerEl.innerHTML = `${minutes}: ${seconds}`;
+    time--;
+    console.log("seconds=" + seconds);
+    console.log("time=" + time);
+    if (time <= 0) {
+      timerEl.innerHTML = "Game Over";
+      // Stop timer
+      clearInterval(countdownTimer);
+      // Show end game results
+      endGame();
+    }
+  }, 1000);
 }
 
 function startGame() {
   startBtn.classList.add("hide");
+  // Shuffle questions
   shuffledQuestions = questions.sort(() => Math.random() - 0.5);
   currentQuestionIndex = 0;
   questionContainerEl.classList.remove("hide");
-  showQuestion(shuffledQuestions[currentQuestionIndex]);
-  answerButtonEl.addEventListener("click", setNextQuestion());
+  showQuestion();
+  answerButtonEl.addEventListener("click", showQuestion);
+
+  // Start counting down
+  countdown();
 }
 
-function setNextQuestion() {
-  showQuestion(shuffledQuestions[currentQuestionIndex]);
-}
+function showQuestion() {
+  var question = shuffledQuestions[currentQuestionIndex];
+  // console.log("showQuestion...");
+  // console.log("event.type=" + event);
+  if (currentQuestionIndex == 10) {
+    endGame();
+  } else {
+    console.log("showQuestion=" + question.questionText);
+    answerHTML = "";
+    quizQue.innerText = question.questionText;
+    for (var i = 0; i < question.answers.length; i++) {
+      var a = question.answers[i];
 
-function showQuestion(question) {
-  questionEl.innerText = question.questionText;
-  for (var i = 0; i < question.answers.length; i++) {
-    var a = question.answers[i];
-
-    // Dynamically display answer buttons
-    answerHTML += '<button class="btn">' + a.text + "</button>";
+      // Dynamically display answer buttons
+      answerHTML +=
+        '<button class="btn" onclick="submitAnswer(' +
+        a.correct +
+        ')">' +
+        a.text +
+        "</button>";
+    }
+    answerButtonEl.innerHTML = answerHTML;
+    currentQuestionIndex++;
   }
-  answerButtonEl.innerHTML = answerHTML;
 }
 
-function selectAnswer() {}
-
-function sendMessage() {
-  timeEl.textContent = "Great! You've finished.";
-  scoresEl.appendChild();
+function submitAnswer(isCorrect) {
+  console.log("XXX submitAnswer=" + isCorrect);
+  if (isCorrect == true) {
+    points++;
+    console.log("points=" + points);
+  } else {
+    time = time - 10;
+  }
 }
 
-// function endGame() {}
+function endGame() {
+  clearInterval(countdownTimer);
+  console.log("End game.");
+  questionContainerEl.setAttribute("style", "visibility:hidden");
+  getInitial();
+}
+
+function getInitial() {
+  // Create and add label to form.
+  var initialsLabels = document.createElement("div");
+  initialsLabels.innerHTML = "<b>Enter your initials here.</b>";
+  document.getElementById("initialTxt").appendChild(initialsLabels);
+
+  // Create and add text input to form.
+  var initials = document.createElement("input");
+  initials.setAttribute("type", "text");
+  //initials.value = "Enter your initials here.";
+  initials.addEventListener("keyup", function (event) {
+    if (event.keyCode == 13) {
+      console.log("Entering initials...");
+      console.log("initials=" + initials.value);
+      initialsValue = initials.value;
+      // Put initials in localStorage
+      // QW=10
+      localStorage.setItem(initialsValue, points);
+      console.log("localStorage points=" + localStorage.getItem(initialsValue));
+      alert("Click 'View Highscores' to see scores.");
+    }
+  });
+  document.getElementById("initialTxt").appendChild(initials);
+}
+
+function displayScores() {
+  scoreBtn.addEventListener("click", displayScores);
+  for (var i = 0; i < localStorage.length; i++) {
+    $("body").append(localStorage.getItem(localStorage.key(i)));
+  }
+}
 
 const questions = [
   {
@@ -159,11 +232,3 @@ const questions = [
     ],
   },
 ];
-
-// localStorage, initials and score (sort descending)
-// var textbox = document.getElementById("textbox")
-// var button = document.getElementById("btn")
-// button.addEventListener("click", function (){
-//  localStorage.name = textbox.value
-// });
-// document.write(localStorage.name);
