@@ -15,10 +15,12 @@ const answerButtonEl = document.getElementById("answerButtons");
 let shuffledQuestions, currentQuestionIndex;
 const questionsMaxLength = 10;
 
-// End of game variables
+// Scoreboard variables
 var points = 0;
 var initials = document.createElement("initial");
 var initialsValue = "";
+const highScores = JSON.parse(localStorage.getItem("points")) || [];
+const MAX_HIGH_SCORES = 5;
 
 // Start button & hide
 startBtn.addEventListener("click", startGame);
@@ -117,7 +119,6 @@ function getInitial() {
       console.log("initials=" + initials.value);
       initialsValue = initials.value;
       // Put initials in localStorage
-      // QW=10
       localStorage.setItem(initialsValue, points);
       console.log("localStorage points=" + localStorage.getItem(initialsValue));
       alert("Click 'View Highscores' to see scores.");
@@ -137,6 +138,10 @@ function displayScores() {
   }
 }
 
+highScores.push(points);
+highScores.sort (a,b) => b.points - a.points)
+
+// Pop Quiz questions array
 const questions = [
   {
     questionText: "What is the real last name of will.i.am?",

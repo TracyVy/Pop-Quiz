@@ -18,17 +18,19 @@
       <h1 class="text-center">Pop Quiz</h1>
     </div>
 
-    <!-- Timer -->
-    <div>
-      <h1 class="timer" id="timer">60 sec Timer</h1>
-    </div>
-
-    <!-- Highscores Button -->
-    <div class="navScore">
-      <button class="scoreBtn">View Highscores</button>
-    </div>
-    <br></br>
-    <div id="initialTxt" class="initial"></div>
+    <!-- Nav with timer, startBtn, scoreBtn and hidden initialTxt field -->
+    <nav>
+      <div>
+        <h1 class="timer" id="timer">60 sec Timer</h1>
+      </div>
+      <div>
+        <button class="startBtn btn" id="startBtn">Play</button>
+      </div>
+      <div>
+        <button class="scoreBtn btn" id="scoreBtn">View Highscores</button>
+      </div>
+      <div class="initial" id="initialTxt"></div>
+    </nav>
 
     <!-- Bootstrap grid -->
     <div class="container-fluid">
@@ -39,10 +41,6 @@
           <div id="questionContainer" class="hide">
             <div id="question"></div>
             <div id="answerButtons" class="btn-group-vertical"></div>
-          </div>
-          <!-- Start control button -->
-          <div class="control">
-            <button class="startBtn btn" id="startBtn">Start</button>
           </div>
         </div>
         <div class="col-md-2"></div>

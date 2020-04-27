@@ -1,6 +1,9 @@
 .jumbotron {
   background-color: rgb(110, 67, 150);
   max-height: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .jumbotron h1 {
@@ -8,14 +11,15 @@
   color: white;
 }
 
-.jumbotron,
-.navScore,
-.timer {
+nav {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.scoreBtn {
+
+.scoreBtn,
+.startBtn {
   border-radius: 3px;
   border-color: rgb(110, 67, 150);
   min-height: 40px;
@@ -47,12 +51,6 @@
 }
 
 .col-md-8 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.control {
   display: flex;
   justify-content: center;
   align-items: center;
