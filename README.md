@@ -5,25 +5,29 @@ As I proceed in my career as a web developer, I want to build a timed code quiz 
 ## User Story
 
 ```
-AS A coding bootcamp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
+AS A quiz player
+I WANT to take a timed quiz that stores high scores and initials
 SO THAT I can gauge my progress compared to my peers
 ```
 
 ## Acceptance Criteria
 
 ```
-GIVEN I am taking a code quiz
+GIVEN I am taking a pop quiz
 WHEN I click the start button
-THEN a timer starts and I am presented with a question
+THEN a 60 seconds timer starts and I am presented with the first shuffled question
 WHEN I answer a question
 THEN I am presented with another question
 WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
+THEN 10 seconds is subtracted from the clock
 WHEN all questions are answered or the timer reaches 0
 THEN the game is over
 WHEN the game is over
-THEN I can save my initials and score
+THEN I am asked to enter in my initials
+WHEN I entered in my initials
+THEN an alert pops to instruct the player to click a  button to view the high scores
+WHEN I click on the 'View Highscores' button
+THEN the scoreboard is displayed
 ```
 
 
