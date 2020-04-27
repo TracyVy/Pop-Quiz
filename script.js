@@ -130,8 +130,9 @@ function getInitial() {
 function displayScores() {
   scoreBtn.addEventListener("click", displayScores);
   for (var i = 0; i < localStorage.length; i++) {
-    questionContainer.innerHTML = append(
-      localStorage.getItem(localStorage.key(i))
+    document.getElementById("questions").innerHTML = localStorage.getItem(
+      "initials",
+      "points"
     );
   }
 }
