@@ -14,11 +14,7 @@ var answerHTML = "";
 const answerButtonEl = document.getElementById("answerButtons");
 let shuffledQuestions, currentQuestionIndex;
 const questionsMaxLength = 10;
-
-// Scoreboard variables
 var points = 0;
-var initials = document.createElement("initial");
-var initialsValue = "";
 
 // Start button & hide
 startBtn.addEventListener("click", startGame);
@@ -98,28 +94,22 @@ function endGame() {
   clearInterval(countdownTimer);
   console.log("End game.");
   quizContainerEl.setAttribute("style", "visibility:hidden");
-  getInitial();
+  createInitInput();
 }
 
-function getInitial() {
+function createInitInput() {
   // Create and add label to form.
-  var initialsLabels = document.createElement("div");
-  initialsLabels.innerHTML = "<b>Enter your initials here.</b>";
-  document.getElementById("initialTxt").appendChild(initialsLabels);
-
-  // Create and add text input to form.
-  var initials = document.createElement("input");
-  initials.setAttribute("type", "text");
-  //initials.value = "Enter your initials here.";
-  initials.addEventListener("keyup", function (event) {
-    if (event.keyCode == 13) {
-      console.log("initials=" + initials.value);
-      initialsValue = initials.value;
+  var initInput = document.createElement("initInput");
+  initInput.setAttribute("type", "text");
+  initInput.innerHTML = "<b>Enter your initials here.</b>";
+  initInput.addEventListener("keyup", function (e) {
+    if (e.keycode == 13) {
+      console.log("initInput=" + initInput.value);
+      initials = initInput.value;
       alert("Click 'View Highscores' to see the scoreboard");
-      localStorage.setItem("highScores", hs);
+      localStorage.setItem("initPoints");
     }
   });
-  document.getElementById("initialTxt").appendChild(initials);
 }
 
 // Pop Quiz questions array
