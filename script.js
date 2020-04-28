@@ -120,7 +120,6 @@ function getInitial() {
     }
   });
   document.getElementById("initialTxt").appendChild(initials);
-  displayScores();
 }
 
 // Pop Quiz questions array
