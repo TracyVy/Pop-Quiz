@@ -11,6 +11,28 @@
     />
     <link rel="stylesheet" href="style.css" />
     <title>Pop Quiz</title>
+
+    <script>
+      var scoresHTML = "";
+      var points = 0;
+      var initials = document.createElement("initial");
+      var initialsValue = "";
+      const highScoresList = document.getElementById("highScoresList");
+      // const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+      const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+      console.log("highScores=" + highScores);
+      const MAX_HIGH_SCORES = 5;
+
+      console.log(
+        highScores
+          .map((score) => {
+            return `<li id="highScoresList">${initials}-${points}</li>`;
+          })
+          .join("")
+      );
+      // highScores.push(points);
+      // highScores.sort (a,b) => b.points - a.points)
+    </script>
   </head>
 
   <body>
@@ -18,54 +40,17 @@
       <h1 class="text-center">Pop Quiz</h1>
     </div>
 
-    <!-- Scoreboard and play again button -->
-    <nav>
+    <section>
+      <h3 id="scoreBoard">Points</h3>
+      <ul id="highScoresList"></ul>
+
+      <!-- Play again button -->
       <div>
         <a href="index.html"
-          ><button class="startBtn btn" id="startBtn">Play Again</button></a
+          ><button class="startBtn btn" id="startBtn">Return Home</button></a
         >
       </div>
-      <div class="container">
-        <div class="row"></div>
-      </div>
-    </nav>
-
-    <table class="container">
-      <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          <thead>
-            <tr>
-              <th scope="col">Initials</th>
-              <th scope="col">Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Init5</td>
-              <td>Points5</td>
-            </tr>
-            <tr>
-              <td>Init4</td>
-              <td>Points4</td>
-            </tr>
-            <tr>
-              <td>Init3</td>
-              <td>Points3</td>
-            </tr>
-            <tr>
-              <td>Init2</td>
-              <td>Points2</td>
-            </tr>
-            <tr>
-              <td>Init1</td>
-              <td>Points1</td>
-            </tr>
-          </tbody>
-        </div>
-        <div class="col-md-4"></div>
-      </div>
-    </table>
+    </section>
 
     <script
       src="https://code.jquery.com/jquery-3.5.0.slim.js"

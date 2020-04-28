@@ -19,8 +19,6 @@ const questionsMaxLength = 10;
 var points = 0;
 var initials = document.createElement("initial");
 var initialsValue = "";
-const highScores = JSON.parse(localStorage.getItem("points")) || [];
-const MAX_HIGH_SCORES = 5;
 
 // Start button & hide
 startBtn.addEventListener("click", startGame);
@@ -99,7 +97,7 @@ function submitAnswer(isCorrect) {
 function endGame() {
   clearInterval(countdownTimer);
   console.log("End game.");
-  questionContainerEl.setAttribute("style", "visibility:hidden");
+  quizContainerEl.setAttribute("style", "visibility:hidden");
   getInitial();
 }
 
@@ -115,31 +113,15 @@ function getInitial() {
   //initials.value = "Enter your initials here.";
   initials.addEventListener("keyup", function (event) {
     if (event.keyCode == 13) {
-      console.log("Entering initials...");
       console.log("initials=" + initials.value);
       initialsValue = initials.value;
-      // Put initials in localStorage
-      localStorage.setItem(initialsValue, points);
-      console.log("localStorage points=" + localStorage.getItem(initialsValue));
-      alert("Click 'View Highscores' to see scores.");
+      alert("Click 'View Highscores' to see the scoreboard");
+      localStorage.setItem("highScores", hs);
     }
   });
   document.getElementById("initialTxt").appendChild(initials);
   displayScores();
 }
-
-function displayScores() {
-  scoreBtn.addEventListener("click", displayScores);
-  for (var i = 0; i < localStorage.length; i++) {
-    document.getElementById("questions").innerHTML = localStorage.getItem(
-      "initials",
-      "points"
-    );
-  }
-}
-
-// highScores.push(points);
-// highScores.sort (a,b) => b.points - a.points)
 
 // Pop Quiz questions array
 const questions = [
