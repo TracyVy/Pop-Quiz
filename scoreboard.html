@@ -41,7 +41,6 @@
       integrity="sha256-sCexhaKpAfuqulKjtSY7V9H7QT0TCN90H+Y5NlmqOUE="
       crossorigin="anonymous"
     ></script>
-    <!-- <script src="script.js"></script> -->
 
     <script>
       // Scoreboard variables
@@ -60,9 +59,14 @@
       }
       highScoresList.innerHTML = scoresList;
 
-      // highScores.push(points);
-      // highScores.sort (a,b) => b.points - a.points)
-      //document.getElementById("initialTxt").appendChild(initials);
+      // Sort players' score in descending order
+      let sortedHighScores = highScores.sort((a, b) =>
+        b.highScores[key] > a.highScores[key] ? 1 : -1
+      );
+      console.log(sortedHighScores);
+
+      // Sort scores
+      const sortHighScores = highScores.sort((a, b) => a - b);
     </script>
   </body>
 </html>
