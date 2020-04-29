@@ -92,7 +92,7 @@ function submitAnswer(isCorrect) {
   }
 }
 
-var highScores = {};
+var highScores = JSON.parse(localStorage.getItem("points")) || {};
 function endGame() {
   clearInterval(countdownTimer);
   console.log("End game.");

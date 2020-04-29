@@ -11,39 +11,6 @@
     />
     <link rel="stylesheet" href="style.css" />
     <title>Pop Quiz</title>
-
-    <script>
-      // Scoreboard variables
-      var initialsValue = "";
-      const highScoresList = document.getElementById("highScoresList");
-      // const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-      const highScores = JSON.parse(localStorage.getItem("points")) || [];
-      const maxHighScores = highScores.length < 5 ? highScores.length : 5;
-
-      /**
-      if (highScores.length < 5) {
-        MAX_HIGH_SCORES = highScores.length;
-      } else {
-        MAX_HIGH_SCORES = 5;
-      }*/
-
-      for (var i = 0; i < maxHighScores; i++) {
-        console.log("highScores=" + highScores[i]);
-      }
-
-      /**
-      console.log(
-        highScores
-          .map((score) => {
-            return `<li id="highScoresList">${initials}-${points}</li>`;
-          })
-          .join("")
-      );
-      */
-      // highScores.push(points);
-      // highScores.sort (a,b) => b.points - a.points)
-      //document.getElementById("initialTxt").appendChild(initials);
-    </script>
   </head>
 
   <body>
@@ -53,7 +20,13 @@
 
     <section>
       <h3 id="scoreBoard">Points</h3>
-      <ul id="highScoresList"></ul>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4" id="highScoresList"></div>
+          <div class="col-md-4"></div>
+        </div>
+      </div>
 
       <!-- Play again button -->
       <div>
@@ -69,5 +42,27 @@
       crossorigin="anonymous"
     ></script>
     <!-- <script src="script.js"></script> -->
+
+    <script>
+      // Scoreboard variables
+      var initialsValue = "";
+      var highScoresList = document.getElementById("highScoresList");
+      // const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+      const highScores = JSON.parse(localStorage.getItem("points")) || [];
+      const maxHighScores = highScores.length < 5 ? highScores.length : 5;
+
+      var scoresList = "";
+      var initials;
+      for (var key in highScores) {
+        console.log("key=" + key + ", points=" + highScores[key]);
+        initials = key.split("::")[0];
+        scoresList += "<div>" + initials + " - " + highScores[key] + "</div>";
+      }
+      highScoresList.innerHTML = scoresList;
+
+      // highScores.push(points);
+      // highScores.sort (a,b) => b.points - a.points)
+      //document.getElementById("initialTxt").appendChild(initials);
+    </script>
   </body>
 </html>
