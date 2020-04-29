@@ -37,6 +37,9 @@ nav {
   border-color: grey;
   border-radius: 5px;
   box-shadow: 0 0 10px 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container-fluid button {
@@ -51,6 +54,12 @@ nav {
 }
 
 .col-md-8 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#answerButtons {
   display: flex;
   justify-content: center;
   align-items: center;

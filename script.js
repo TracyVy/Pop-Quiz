@@ -98,11 +98,12 @@ function endGame() {
 }
 
 function createInitInput() {
-  // Create and add label to form.
-  var initInput = document.createElement("initInput");
-  initInput.setAttribute("type", "text");
-  initInput.innerHTML = "<b>Enter your initials here.</b>";
-  initInput.addEventListener("keyup", function (e) {
+  // Create initials text input.
+  var initialsEl = document.createElement("input");
+  initialsEl.setAttribute("type", "text");
+  document.appendChild(initialsEl);
+  initialsEl.innerHTML = "<b>Enter your initials here.</b>";
+  initialsEl.addEventListener("keyup", function (e) {
     if (e.keycode == 13) {
       console.log("initInput=" + initInput.value);
       initials = initInput.value;
