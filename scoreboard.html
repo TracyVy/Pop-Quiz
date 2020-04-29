@@ -18,9 +18,20 @@
       const highScoresList = document.getElementById("highScoresList");
       // const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
       const highScores = JSON.parse(localStorage.getItem("points")) || [];
-      console.log("highScores=" + highScores);
-      const MAX_HIGH_SCORES = 5;
+      const maxHighScores = highScores.length < 5 ? highScores.length : 5;
 
+      /**
+      if (highScores.length < 5) {
+        MAX_HIGH_SCORES = highScores.length;
+      } else {
+        MAX_HIGH_SCORES = 5;
+      }*/
+
+      for (var i = 0; i < maxHighScores; i++) {
+        console.log("highScores=" + highScores[i]);
+      }
+
+      /**
       console.log(
         highScores
           .map((score) => {
@@ -28,6 +39,7 @@
           })
           .join("")
       );
+      */
       // highScores.push(points);
       // highScores.sort (a,b) => b.points - a.points)
       //document.getElementById("initialTxt").appendChild(initials);
@@ -56,6 +68,6 @@
       integrity="sha256-sCexhaKpAfuqulKjtSY7V9H7QT0TCN90H+Y5NlmqOUE="
       crossorigin="anonymous"
     ></script>
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
   </body>
 </html>

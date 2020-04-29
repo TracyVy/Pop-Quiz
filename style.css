@@ -69,11 +69,10 @@ nav {
   display: none;
 }
 
-.initial {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
+#initialsContainer {
+  height: 200px;
+  visibility: hidden;
+  background-color: #ff0000;
 }
 
 section {

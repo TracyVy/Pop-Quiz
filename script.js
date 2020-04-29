@@ -9,6 +9,8 @@ var countdownTimer;
 
 // Quiz variables
 const quizContainerEl = document.getElementById("quizContainer");
+const initialsContainerEl = document.getElementById("initialsContainer");
+const initialsEl = document.getElementById("initials");
 const quizQue = document.getElementById("question");
 var answerHTML = "";
 const answerButtonEl = document.getElementById("answerButtons");
@@ -90,25 +92,23 @@ function submitAnswer(isCorrect) {
   }
 }
 
+var highScores = {};
 function endGame() {
   clearInterval(countdownTimer);
   console.log("End game.");
   quizContainerEl.setAttribute("style", "visibility:hidden");
-  createInitInput();
-}
-
-function createInitInput() {
-  // Create initials text input.
-  var initialsEl = document.createElement("input");
-  initialsEl.setAttribute("type", "text");
-  document.appendChild(initialsEl);
-  initialsEl.innerHTML = "<b>Enter your initials here.</b>";
+  //createInitInput();
+  initialsContainerEl.setAttribute("style", "visibility:visible");
   initialsEl.addEventListener("keyup", function (e) {
-    if (e.keycode == 13) {
-      console.log("initInput=" + initInput.value);
-      initials = initInput.value;
+    console.log("initials entered...");
+    //e.preventDefault();
+    if (e.keyCode == 13) {
+      console.log("initInput=" + initialsEl.value);
+      initials = initialsEl.value + "::" + new Date();
       alert("Click 'View Highscores' to see the scoreboard");
-      localStorage.setItem("initPoints");
+      // localStorage.setItem(initials, points);
+      highScores[initials] = points;
+      localStorage.setItem("points", JSON.stringify(highScores));
     }
   });
 }
