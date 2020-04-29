@@ -70,13 +70,9 @@ nav {
 }
 
 #initialsContainer {
-  height: 100px;
   visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0;
+  position: absolute;
+  margin-top: 3%;
 }
 
 section {
