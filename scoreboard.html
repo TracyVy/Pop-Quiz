@@ -60,6 +60,7 @@
       highScoresList.innerHTML = scoresList;
 
       // Sort players' score in descending order
+      console.log(highScores);
       let sortedHighScores = highScores.sort((a, b) =>
         b.highScores[key] > a.highScores[key] ? 1 : -1
       );

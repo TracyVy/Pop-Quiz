@@ -5,18 +5,18 @@ const startBtn = document.getElementById("startBtn");
 const startingMinutes = 1;
 let time = startingMinutes * 59;
 const timerEl = document.getElementById("timer");
-var countdownTimer;
+let countdownTimer;
 
 // Quiz variables
 const quizContainerEl = document.getElementById("quizContainer");
 const initialsContainerEl = document.getElementById("initialsContainer");
 const initialsEl = document.getElementById("initials");
 const quizQue = document.getElementById("question");
-var answerHTML = "";
+let answerHTML = "";
 const answerButtonEl = document.getElementById("answerButtons");
 let shuffledQuestions, currentQuestionIndex;
 const questionsMaxLength = 10;
-var points = 0;
+let points = 0;
 
 // Start button & hide
 startBtn.addEventListener("click", startGame);
@@ -24,7 +24,6 @@ startBtn.addEventListener("click", startGame);
 function countdown() {
   console.log("Starting countdownTimer...");
   // Time Interval
-  //countdownTimer =
   countdownTimer = setInterval(function () {
     const minutes = Math.floor(time / 60);
     let seconds = time % 60;
@@ -92,8 +91,8 @@ function submitAnswer(isCorrect) {
   }
 }
 
-var highScores = JSON.parse(localStorage.getItem("points")) || {};
-function endGame() {
+let highScores = JSON.parse(localStorage.getItem("points")) || {};
+(endGame) => {
   clearInterval(countdownTimer);
   console.log("End game.");
   quizContainerEl.setAttribute("style", "visibility:hidden");
@@ -111,7 +110,7 @@ function endGame() {
       localStorage.setItem("points", JSON.stringify(highScores));
     }
   });
-}
+};
 
 // Pop Quiz questions array
 const questions = [
